@@ -56,6 +56,13 @@ def aclass():
 
     r = browser.submit()
 
+def is_network_available():
+    try:
+        # Try to make a simple HTTP request to a known server (e.g., Google)
+        response = requests.get("https://www.google.com", timeout=5)
+        return response.status_code == 200
+    except requests.RequestException:
+        return False
     
 
     
@@ -105,6 +112,10 @@ while True:
             if count != 0:
 
                 sleep(msg6)
+
+            while not is_network_available():
+                print("Waiting for network connection to be restored...")
+                sleep(10)
 
             openlink(msg4)
 
