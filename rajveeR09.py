@@ -56,13 +56,7 @@ def aclass():
 
     r = browser.submit()
 
-def is_network_available():
-    try:
-        # Try to make a simple HTTP request to a known server (e.g., Google)
-        response = requests.get("https://www.google.com", timeout=5)
-        return response.status_code == 200
-    except requests.RequestException:
-        return False
+
     
 
     
@@ -74,6 +68,14 @@ def poct(comment):
     browser.form['comment_text'] = comment
 
     r = browser.submit()
+
+def is_network_available():
+    try:
+        # Try to make a simple HTTP request to a known server (e.g., Google)
+        response = requests.get("https://www.google.com", timeout=5)
+        return response.status_code == 200
+    except requests.RequestException:
+        return False
 
 print ("[-[ TH3 T00L  CREATE BY 9NSH ROY]-]")
 
